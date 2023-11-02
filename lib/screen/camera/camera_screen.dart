@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:camera/camera.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -10,6 +8,7 @@ class CameraScreen extends StatefulWidget {
   State<CameraScreen> createState() => _CameraScreenState();
 }
 
+// ignore: constant_identifier_names
 enum WidgetState{NONE,LOADING,LOADED,ERROR}
 
 class _CameraScreenState extends State<CameraScreen> {
@@ -32,11 +31,11 @@ class _CameraScreenState extends State<CameraScreen> {
     switch(_widgetState){
       case WidgetState.NONE:
       case WidgetState.LOADING:
-        return _buildScaffold( context,Center(child: CircularProgressIndicator() ));
+        return _buildScaffold( context,const Center(child: CircularProgressIndicator() ));
       case WidgetState.LOADED:
         return _buildScaffold( context,CameraPreview(_cameraController));
       case WidgetState.ERROR:
-        return _buildScaffold( context,Center(child: Text("Error al cargar la camara") ));
+        return _buildScaffold( context,const Center(child: Text("Error al cargar la camara") ));
     }   
     
   }
@@ -45,7 +44,7 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget _buildScaffold(BuildContext context,Widget body){
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cámara"),
+        title: const Text("Cámara"),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -54,9 +53,10 @@ class _CameraScreenState extends State<CameraScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async{
           XFile xFile = await _cameraController.takePicture();
+          // ignore: use_build_context_synchronously
           Navigator.pop(context,xFile.path);
         },
-        child: Icon(Icons.camera)
+        child: const Icon(Icons.camera)
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -69,7 +69,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
     _cameras = await availableCameras();
 
-    _cameraController = new CameraController(_cameras[0],ResolutionPreset.medium);
+    _cameraController = CameraController(_cameras[0],ResolutionPreset.medium);
 
     await _cameraController.initialize();
 

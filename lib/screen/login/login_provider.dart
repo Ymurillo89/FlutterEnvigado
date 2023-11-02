@@ -1,9 +1,8 @@
 import 'package:appuenvigado/screen/home/home_screen.dart';
-import 'package:appuenvigado/screen/shared/nav/nav_screen.dart';
 import 'package:appuenvigado/service/alert_service.dart';
 import 'package:flutter/material.dart';
 
-import '../work/work_screen.dart';
+
 
 class LoginProvider extends ChangeNotifier{
 

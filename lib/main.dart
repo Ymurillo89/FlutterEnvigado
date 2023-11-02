@@ -1,6 +1,8 @@
 
+import 'package:appuenvigado/screen/home/home_provider.dart';
 import 'package:appuenvigado/screen/login/login_provider.dart';
 import 'package:appuenvigado/screen/login/login_screen.dart';
+import 'package:appuenvigado/screen/notice/notice_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +17,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
        providers: [
-          ChangeNotifierProvider(create: (_)=> LoginProvider())
+          ChangeNotifierProvider(create: (_)=> HomeProvider()),
+          ChangeNotifierProvider(create: (_)=> NoticeProvider()),
+          ChangeNotifierProvider(create: (_)=> LoginProvider()),
       ],
       child:  MaterialApp(
         theme: ThemeData(useMaterial3: true),

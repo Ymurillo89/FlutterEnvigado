@@ -3,9 +3,7 @@ import 'package:appuenvigado/screen/home/home_provider.dart';
 import 'package:appuenvigado/screen/work/work_screen.dart';
 import 'package:appuenvigado/screen/notice/notice_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:camera/camera.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,9 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _getDrawerItemWidget(int position){
     switch(position){
-      case 0: return WorkScreen();
-      case 1: return NoticeScreen();
-      case 3: return CameraScreen();
+      case 0: return const NoticeScreen();
+      case 1: return const NoticeScreen();
+      case 3: return const CameraScreen();
     }
   }
 
@@ -55,8 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ExpansionTile(
-              title: Text("Consultas"),
-              leading: Icon(Icons.search),
+              title: const Text("Consultas"),
+              leading: const Icon(Icons.search),
               children: [
                 ListTile(
                   title: const Text("Promedio"),
@@ -73,10 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListTile(
                   title: const Text("Notas periodo"),
                   onTap: () async{
-                    String path= await Navigator.push(context, MaterialPageRoute(builder: (context)=> CameraScreen()));
-                    homeProvider.image.add(path);
-                    Navigator.pop(context);
-                    
+                    String path= await Navigator.push(context, MaterialPageRoute(builder: (context)=> const CameraScreen()));
+                    //Navigator.pop(context,path);
+                    homeProvider.addImage(path,context);
+
+                      setState(() {
+                        
+                      });
                   },
                 ),
                 ListTile(
@@ -88,8 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             ExpansionTile(
-              title: Text("Matrículas"),
-              leading: Icon(Icons.book),
+              title: const Text("Matrículas"),
+              leading: const Icon(Icons.book),
               children: [
                 ListTile(
                   title: const Text("Registrar materias"),
@@ -118,8 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             ExpansionTile(
-              title: Text("Solicitudes"),
-              leading: Icon(Icons.document_scanner),
+              title: const Text("Solicitudes"),
+              leading: const Icon(Icons.document_scanner),
               children: [
                 ListTile(
                   title: const Text("Certificados"),
@@ -149,22 +150,19 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               title: const Text("Noticias"),
-              leading: Icon(Icons.notification_add),
+              leading: const Icon(Icons.notification_add),
               onTap: (){
                 _onSelectItem(0);
               },
             ),
             ListTile(
               title: const Text("Tareas"),
-              leading: Icon(Icons.home_work),
+              leading: const Icon(Icons.home_work),
               onTap: (){
                 _onSelectItem(0);
               },
-            ),
-            
-            
+            ),                       
           ],
-
         ),
         
       ),
