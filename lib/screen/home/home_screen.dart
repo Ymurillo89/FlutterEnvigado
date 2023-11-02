@@ -1,6 +1,5 @@
 import 'package:appuenvigado/screen/camera/camera_screen.dart';
 import 'package:appuenvigado/screen/home/home_provider.dart';
-import 'package:appuenvigado/screen/work/work_screen.dart';
 import 'package:appuenvigado/screen/notice/notice_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -45,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: <Widget>[
             const UserAccountsDrawerHeader(
-              accountName: Text("Andres"), 
-              accountEmail: Text("Email"),
+              accountName: Text(""), 
+              accountEmail: Text(""),
               currentAccountPicture: CircleAvatar (
                 backgroundColor: Colors.blue,
                 child: Icon(Icons.person,size: 50, color: Colors.white,)
@@ -69,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 ListTile(
-                  title: const Text("Notas periodo"),
+                  title: const Text("Cámara"),
                   onTap: () async{
                     String path= await Navigator.push(context, MaterialPageRoute(builder: (context)=> const CameraScreen()));
                     //Navigator.pop(context,path);
